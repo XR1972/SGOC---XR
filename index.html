@@ -46,7 +46,8 @@ const createScene = async function () {
     );
 
     camera.attachControl(canvas, true);
-    camera.speed = 0.05;
+    camera.speed = 0.01;
+    camera.minZ = 0.05;
     
     camera.applyGravity = true;
     camera.checkCollisions = true;
