@@ -64,6 +64,24 @@ const createScene = async function () {
 
     console.log("MODELO SGOC CARGADO", result);
 
+
+    // Encuadrar automaticamente el modelo cargado
+const meshes = result.meshes.filter(m => m.getTotalVertices && m.getTotalVertices() > 0);
+const bounds = BABYLON.Mesh.MinMax(meshes);
+const center = BABYLON.Vector3.Center(bounds.min, bounds.max);
+const size = bounds.max.subtract(bounds.min);
+const maxSize = Math.max(size.x, size.y, size.z);
+
+camera.position = new BABYLON.Vector3(
+    center.x,
+    center.y + maxSize * 0.15,
+    center.z - maxSize * 1.5
+);
+camera.setTarget(center);
+
+console.log("CENTRO MODELO:", center);
+console.log("TAMANO MODELO:", size);
+
     // Activar WebXR
     try {
 
