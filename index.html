@@ -45,10 +45,7 @@ const createScene = async function () {
 
     camera.attachControl(canvas, true);
 
-    camera.inputs.attached.keyboard.keysUp.push(87);     // W
-    camera.inputs.attached.keyboard.keysDown.push(83);   // S
-    camera.inputs.attached.keyboard.keysLeft.push(65);   // A
-    camera.inputs.attached.keyboard.keysRight.push(68);  // D
+    
     camera.speed = 2.0;
     camera.angularSensibility = 3500;
     camera.inertia = 0.7;
