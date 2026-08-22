@@ -45,6 +45,11 @@ const createScene = async function () {
 
     camera.attachControl(canvas, true);
 
+    camera.keysUp.push(87);     // W
+    camera.keysDown.push(83);   // S
+    camera.keysLeft.push(65);   // A
+    camera.keysRight.push(68);  // D
+
     // Luz
     const light = new BABYLON.HemisphericLight(
         "light",
