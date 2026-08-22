@@ -79,10 +79,15 @@ const maxSize = Math.max(size.x, size.y, size.z);
 
 camera.position = new BABYLON.Vector3(
     center.x,
-    center.y + maxSize * 0.15,
-    center.z - maxSize * 1.5
+    bounds.min.y + 1.70,
+    bounds.min.z - maxSize * 0.15
 );
-camera.setTarget(center);
+
+camera.setTarget(new BABYLON.Vector3(
+    center.x,
+    bounds.min.y + 1.70,
+    center.z
+));
 
 console.log("CENTRO MODELO:", center);
 console.log("TAMANO MODELO:", size);
