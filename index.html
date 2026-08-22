@@ -35,6 +35,8 @@ const engine = new BABYLON.Engine(canvas, true);
 const createScene = async function () {
 
     const scene = new BABYLON.Scene(engine);
+    scene.collisionsEnabled = true;
+    scene.gravity = new BABYLON.Vector3(0, -0.5, 0);
 
     // Cámara inicial
     const camera = new BABYLON.UniversalCamera(
@@ -44,6 +46,9 @@ const createScene = async function () {
     );
 
     camera.attachControl(canvas, true);
+    camera.applyGravity = true;
+    camera.checkCollisions = true;
+    camera.ellipsoid = new BABYLON.Vector3(0.4, 0.85, 0.4);
 
     camera.keysUp.push(87);     // W
     camera.keysDown.push(83);   // S
@@ -68,6 +73,9 @@ const createScene = async function () {
     );
 
     console.log("MODELO SGOC CARGADO", result);
+    result.meshes.forEach(mesh => {
+    mesh.checkCollisions = true;
+    });
 
 
     // Encuadrar automaticamente el modelo cargado
