@@ -53,28 +53,12 @@ const createScene = async function () {
     camera.checkCollisions = true;
     camera.ellipsoid = new BABYLON.Vector3(0.4, 0.85, 0.4);
 
-    // W y S: avanzar y retroceder
-    camera.keysUp = [87, 38];       // W + flecha arriba
-    camera.keysDown = [83, 40];     // S + flecha abajo
+    camera.keysUp.push(87);     // W
+    camera.keysDown.push(83);   // S
+    camera.keysLeft.push(65);   // A
+    camera.keysRight.push(68);  // D
 
-    // Quitamos movimiento lateral de A/D y flechas
-    camera.keysLeft = [];
-    camera.keysRight = [];
-
-     // A/D y flechas izquierda/derecha: girar sobre el propio eje
-     const giroVelocidad = 0.035;
-
-     window.addEventListener("keydown", function (event) {
-     if (event.code === "KeyA" || event.code === "ArrowLeft") {
-        camera.rotation.y -= giroVelocidad;
-     }
-
-    if (event.code === "KeyD" || event.code === "ArrowRight") {
-        camera.rotation.y += giroVelocidad;
-     }
-     });
-
-      // Luz
+    // Luz
     const light = new BABYLON.HemisphericLight(
         "light",
         new BABYLON.Vector3(0, 1, 0),
