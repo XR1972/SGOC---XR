@@ -106,10 +106,24 @@ console.log("TAMANO MODELO:", size);
     // Activar WebXR
     try {
 
-        const xr = await scene.createDefaultXRExperienceAsync({
-            floorMeshes: []
-        });
+const xr = await scene.createDefaultXRExperienceAsync({
+    floorMeshes: [],
+    disableTeleportation: true
+});
 
+const featuresManager = xr.baseExperience.featuresManager;
+
+featuresManager.enableFeature(
+    BABYLON.WebXRFeatureName.MOVEMENT,
+    "latest",
+    {
+        xrInput: xr.input,
+        movementOrientationFollowsViewerPose: true,
+        movementSpeed: 0.08,
+        rotationSpeed: 0.20
+    }
+);
+      
         console.log("SGOC XR ACTIVO");
 
     } catch (error) {
